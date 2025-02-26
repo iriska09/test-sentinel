@@ -46,7 +46,7 @@ resource "aws_security_group" "example" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"] # This is what we want to block
+    cidr_blocks = ["0.0.0.0/0"] 
   }
 
   egress {
