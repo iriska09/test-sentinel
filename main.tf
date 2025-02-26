@@ -56,4 +56,4 @@ resource "aws_security_group" "example" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-//changed for test sentinal policies s
+//changed for test sentinal policies s2
