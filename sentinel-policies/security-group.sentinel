@@ -1,0 +1,16 @@
+import "tfplan/v2" as tfplan
+import "strings"
+
+security_groups = filter tfplan.resource_changes as _, rc {
+  rc.type is "aws_security_group"
+}
+
+main = rule {
+  all security_groups as sg {
+    all sg.change.after.ingress as ingress {
+      all ingress.cidr_blocks as cidr {
+        not strings.contains(cidr, "0.0.0.0/0")
+      }
+    }
+  }
+}

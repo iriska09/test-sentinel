@@ -1,0 +1,11 @@
+import "tfplan/v2" as tfplan
+
+resources = filter tfplan.resource_changes as _, rc {
+  rc.type is "aws_instance" or rc.type is "aws_security_group"
+}
+
+main = rule {
+  all resources as r {
+    length(r.change.after.tags) > 0
+  }
+}
